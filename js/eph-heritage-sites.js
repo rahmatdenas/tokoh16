@@ -407,8 +407,16 @@ function updateFeatureCounts() {
 let labelIrisan = document.getElementById('label-irisan');
   let labelGabungan = document.getElementById('label-gabungan');
   
-  if (labelIrisan) labelIrisan.textContent = `Rangkap Pekerjaan (${totalIntersection} Tokoh)`;
-  if (labelGabungan) labelGabungan.textContent = `Memiliki Salah Satu Pekerjaan (${totalUnion} Tokoh)`;
+  // Mengecek apakah tombol pekerjaan yang aktif berjumlah 2 atau lebih
+  if (activePekerjaan.size >= 2) {
+    // Jika 2 atau lebih, tampilkan jumlah tokohnya
+    if (labelIrisan) labelIrisan.textContent = `Rangkap Pekerjaan (${totalIntersection} Tokoh)`;
+    if (labelGabungan) labelGabungan.textContent = `Memiliki Salah Satu Pekerjaan (${totalUnion} Tokoh)`;
+  } else {
+    // Jika kurang dari 2 (1 atau 0), sembunyikan angka dan beri petunjuk
+    if (labelIrisan) labelIrisan.textContent = `Rangkap Pekerjaan (Silakan pilih minimal 2 pekerjaan)`;
+    if (labelGabungan) labelGabungan.textContent = `Memiliki Salah Satu Pekerjaan (Silakan pilih minimal 2 pekerjaan)`;
+  }
 }
 
 // 7. Mesin Eksekutor Gabungan/Irisan
