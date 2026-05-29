@@ -245,15 +245,31 @@ let sortedRegions = Object.keys(BirthplaceIndex)
 
       PekerjaanButtons[pkj] = btn;
 
-      btn.addEventListener('click', function() {
+btn.addEventListener('click', function() {
         let filterType = this.getAttribute('data-filter');
+        let modeElement = document.querySelector('input[name="job_mode"]:checked');
+        let activeMode = modeElement ? modeElement.value : 'single';
 
-        if (activePekerjaan.has(filterType)) {
-          activePekerjaan.delete(filterType);
-          this.classList.remove('active');
+        if (activeMode === 'single') {
+          // Mode Default: Bersihkan yang lain jika memilih tombol baru
+          if (activePekerjaan.has(filterType)) {
+            activePekerjaan.delete(filterType);
+            this.classList.remove('active');
+          } else {
+            activePekerjaan.clear();
+            featButtons.forEach(b => b.classList.remove('active')); // Matikan visual tombol lain
+            activePekerjaan.add(filterType);
+            this.classList.add('active');
+          }
         } else {
-          activePekerjaan.add(filterType);
-          this.classList.add('active');
+          // Mode Gabungan/Irisan: Bisa pilih banyak (Multi-select)
+          if (activePekerjaan.has(filterType)) {
+            activePekerjaan.delete(filterType);
+            this.classList.remove('active');
+          } else {
+            activePekerjaan.add(filterType);
+            this.classList.add('active');
+          }
         }
 
         if (activePekerjaan.size === 0) {
@@ -278,25 +294,28 @@ let sortedRegions = Object.keys(BirthplaceIndex)
       applyIntersectionFilter();
     });
   }
-
-  let modeSelect = document.getElementById('filter-mode-select');
-  if (modeSelect) {
-    modeSelect.addEventListener('change', function() {
-      currentFilterMode = this.value;
+let modeRadios = document.querySelectorAll('input[name="job_mode"]');
+  modeRadios.forEach(radio => {
+    radio.addEventListener('change', function() {
+      // Jika user kembali memilih "Pilih 1 Saja" tapi tombol yang aktif ada banyak, kita reset
+      if (this.value === 'single' && activePekerjaan.size > 1) {
+        activePekerjaan.clear();
+        featButtons.forEach(b => b.classList.remove('active'));
+        if (btnAllPekerjaan) btnAllPekerjaan.classList.add('active');
+      }
+      updateFeatureCounts();
       applyIntersectionFilter();
-      this.blur();
     });
-  }
+  });
 }
 // 6. Kalkulator Tombol Angka oleh Denas
 function updateFeatureCounts() {
   let selectRegion = document.getElementById('filter-region');
   let selectGender = document.getElementById('filter-gender');
-  let modeSelect = document.getElementById('filter-mode-select');
-
+  let modeElement = document.querySelector('input[name="job_mode"]:checked');
   let activeRegion = selectRegion ? selectRegion.value : 'all';
   let activeGender = selectGender ? selectGender.value : 'all';
-  let activeMode = modeSelect ? modeSelect.value : 'intersection';
+  let activeMode = modeElement ? modeElement.value : 'single';
 
   let totalUnion = 0;
   let totalIntersection = 0;
@@ -391,22 +410,22 @@ function updateFeatureCounts() {
   let btnAllPekerjaan = document.getElementById('btn-all-pekerjaan');
   if (btnAllPekerjaan) btnAllPekerjaan.style.order = 0;
 
-if (modeSelect) {
-    modeSelect.options[0].textContent = `Hanya Irisan – ${totalIntersection} Tokoh (pilih min. 2 pekerjaan)`;
-    modeSelect.options[1].textContent = `Tampilkan Gabungan – ${totalUnion} Tokoh`;
-  }
+let labelIrisan = document.getElementById('label-irisan');
+  let labelGabungan = document.getElementById('label-gabungan');
+  
+  if (labelIrisan) labelIrisan.textContent = `Mode Irisan (${totalIntersection} Tokoh)`;
+  if (labelGabungan) labelGabungan.textContent = `Mode Gabungan (${totalUnion} Tokoh)`;
 }
 
 // 7. Mesin Eksekutor Gabungan/Irisan (Diperbarui untuk Infinite Scroll)
 function applyIntersectionFilter() {
   let selectRegion = document.getElementById('filter-region');
   let selectGender = document.getElementById('filter-gender');
-  let modeSelect = document.getElementById('filter-mode-select');
+  let modeElement = document.querySelector('input[name="job_mode"]:checked');
   let searchInput = document.getElementById('search-tokoh');
-
   let activeRegion = selectRegion ? selectRegion.value : 'all';
   let activeGender = selectGender ? selectGender.value : 'all';
-  let activeMode = modeSelect ? modeSelect.value : 'intersection';
+ let activeMode = modeElement ? modeElement.value : 'single';
   let keywordCari = searchInput ? searchInput.value.toLowerCase() : '';
 
   // Filter Data Array Mentah
