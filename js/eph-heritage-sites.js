@@ -224,6 +224,15 @@ if(selectRegion) {
     });
   }
 
+  if (selectGender) {
+    selectGender.addEventListener('change', function() {
+      currentGenderFilter = this.value; 
+      updateFeatureCounts();
+      applyIntersectionFilter();
+      this.blur();
+    });
+  }
+
   if (containerPekerjaan && btnAllPekerjaan) {
     let sortedPekerjaan = Object.keys(PekerjaanIndex)
       .filter(label => label !== 'all')
