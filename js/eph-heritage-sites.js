@@ -1,6 +1,6 @@
 'use strict';
 
-const CHUNK_SIZE = 10;
+const CHUNK_SIZE = 35;
 let currentRenderIndex = 0;
 let currentFilteredRecords = [];
 let currentFilterMode = 'intersection';
@@ -621,7 +621,7 @@ function displayArticleExtract(title, elem) {
 
       if (extract) {
           let paragraphs = extract.match(/<p[^>]*>[\s\S]*?<\/p>/g);
-          let validText = paragraphs ? paragraphs.find(text => text.length > 10) : extract;
+          let validText = paragraphs ? paragraphs.find(text => text.length > 35) : extract;
           if (!validText) validText = extract;
 
           elem.innerHTML = validText +
