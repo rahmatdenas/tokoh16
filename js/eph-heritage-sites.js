@@ -190,8 +190,16 @@ function generateFilterSelect() {
     `;
 
 let sortedRegions = Object.keys(BirthplaceIndex)
-      .filter(lbl => lbl !== 'all' && lbl !== 'Luar Negeri' && lbl !== 'Indonesia (Umum)' && lbl !== 'Hindia Belanda')
-      .sort((a, b) => a.localeCompare(b));
+      .filter(lbl => 
+          lbl !== 'all' && 
+          lbl !== 'Luar Negeri' && 
+          lbl !== 'Indonesia (Umum)' && 
+          lbl !== 'Hindia Belanda' &&
+          lbl !== 'Sumatera' &&
+          lbl !== 'Jawa' &&
+          lbl !== 'Sulawesi'
+      )
+      .sort((a, b) => a.localeCompare(b));
 
     if (BirthplaceIndex['Luar Negeri']) {
       sortedRegions.push('Luar Negeri');
