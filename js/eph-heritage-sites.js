@@ -180,16 +180,13 @@ function generateFilterSelect() {
   let containerPekerjaan = document.getElementById('filter-pekerjaan-buttons');
   let btnAllPekerjaan = document.getElementById('btn-all-pekerjaan');
 
-  if(selectRegion) {
+if(selectRegion) {
     let totalLuarNegeri = BirthplaceIndex['Luar Negeri'] ? BirthplaceIndex['Luar Negeri'].total : 0;
     let totalIndonesia = BirthplaceIndex.all.total - totalLuarNegeri;
-
-   selectRegion.innerHTML = `
-      <option value="all">Semua Tempat Lahir – ${BirthplaceIndex.all.total} Tokoh</option>
+    selectRegion.innerHTML = `
       <option value="indonesia_only" selected>Seluruh Indonesia – ${totalIndonesia} Tokoh</option>
     `;
-
-let sortedRegions = Object.keys(BirthplaceIndex)
+    let sortedRegions = Object.keys(BirthplaceIndex)
       .filter(lbl => 
           lbl !== 'all' && 
           lbl !== 'Luar Negeri' && 
@@ -200,29 +197,27 @@ let sortedRegions = Object.keys(BirthplaceIndex)
           lbl !== 'Sulawesi'
       )
       .sort((a, b) => a.localeCompare(b));
-
-    if (BirthplaceIndex['Luar Negeri']) {
-      sortedRegions.push('Luar Negeri');
-    }
-
     sortedRegions.forEach(lbl => {
       let option = document.createElement('option');
       option.value = lbl;
       option.textContent = `${lbl} – ${BirthplaceIndex[lbl].total} Tokoh`;
       selectRegion.appendChild(option);
     });
+    if (BirthplaceIndex['Luar Negeri']) {
+      let optionLN = document.createElement('option');
+      optionLN.value = 'Luar Negeri';
+      optionLN.textContent = `Luar Negeri – ${BirthplaceIndex['Luar Negeri'].total} Tokoh`;
+      selectRegion.appendChild(optionLN);
+    }
+    if (BirthplaceIndex.all) {
+      let optionAll = document.createElement('option');
+      optionAll.value = 'all';
+      optionAll.textContent = `Semua Tempat Lahir – ${BirthplaceIndex.all.total} Tokoh`;
+      selectRegion.appendChild(optionAll);
+    }
 
     selectRegion.addEventListener('change', function() {
       currentRegionFilter = this.value;
-      updateFeatureCounts();
-      applyIntersectionFilter();
-      this.blur();
-    });
-  }
-
-  if(selectGender) {
-    selectGender.addEventListener('change', function() {
-      currentGenderFilter = this.value;
       updateFeatureCounts();
       applyIntersectionFilter();
       this.blur();
