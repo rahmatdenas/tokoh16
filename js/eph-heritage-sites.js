@@ -4,7 +4,7 @@ const CHUNK_SIZE = 10;
 let currentRenderIndex = 0;
 let currentFilteredRecords = [];
 let currentFilterMode = 'intersection';
-let currentRegionFilter = 'all';
+let currentRegionFilter = 'indonesia_only';
 let currentGenderFilter = 'all';
 let activePekerjaan = new Set();
 let PekerjaanButtons = {};
@@ -192,9 +192,9 @@ function generateFilterSelect() {
     let totalLuarNegeri = BirthplaceIndex['Luar Negeri'] ? BirthplaceIndex['Luar Negeri'].total : 0;
     let totalIndonesia = BirthplaceIndex.all.total - totalLuarNegeri;
 
-    selectRegion.innerHTML = `
+   selectRegion.innerHTML = `
       <option value="all">Semua Tempat Lahir – ${BirthplaceIndex.all.total} Tokoh</option>
-      <option value="indonesia_only">Seluruh Indonesia – ${totalIndonesia} Tokoh</option>
+      <option value="indonesia_only" selected>Seluruh Indonesia – ${totalIndonesia} Tokoh</option>
     `;
 
 let sortedRegions = Object.keys(BirthplaceIndex)
