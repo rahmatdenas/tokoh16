@@ -287,11 +287,15 @@ btn.addEventListener('click', function() {
 let modeRadios = document.querySelectorAll('input[name="job_mode"]');
   modeRadios.forEach(radio => {
     radio.addEventListener('change', function() {
-      activePekerjaan.clear();
-      let allFeatBtns = document.querySelectorAll('.feat-btn[data-filter]');
-      allFeatBtns.forEach(b => b.classList.remove('active'));
-      let btnAll = document.getElementById('btn-all-pekerjaan');
-      if (btnAll) btnAll.classList.add('active');
+      let selectedMode = this.value;
+      if (selectedMode === 'single' && activePekerjaan.size > 1) {
+        activePekerjaan.clear();
+        let allFeatBtns = document.querySelectorAll('.feat-btn[data-filter]');
+        allFeatBtns.forEach(b => b.classList.remove('active'));
+        let btnAll = document.getElementById('btn-all-pekerjaan');
+        if (btnAll) btnAll.classList.add('active');
+      }
+      
       updateFeatureCounts();
       applyIntersectionFilter();
       
