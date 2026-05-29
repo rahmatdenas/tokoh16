@@ -3,6 +3,102 @@
     "bindings": [
       {
     "tempatLahirQid": {
+      "value": "Q12477580"
+    },
+    "provinsiLabel": {
+      "value": "Kalimantan Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12485164"
+    },
+    "provinsiLabel": {
+      "value": "Kalimantan Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q11031868"
+    },
+    "provinsiLabel": {
+      "value": "Kalimantan Selatan"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q4255876"
+    },
+    "provinsiLabel": {
+      "value": "Kalimantan Selatan"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q4216381"
+    },
+    "provinsiLabel": {
+      "value": "Kalimantan Selatan"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q4196299"
+    },
+    "provinsiLabel": {
+      "value": "Sulawesi Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q4194059"
+    },
+    "provinsiLabel": {
+      "value": "Sulawesi Selatan"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12475091"
+    },
+    "provinsiLabel": {
+      "value": "Sulawesi Selatan"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q4195673"
+    },
+    "provinsiLabel": {
+      "value": "Sulawesi Utara"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12522080"
+    },
+    "provinsiLabel": {
+      "value": "Sulawesi Utara"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q13549184"
+    },
+    "provinsiLabel": {
+      "value": "Nusa Tenggara Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q2008985"
+    },
+    "provinsiLabel": {
+      "value": "Maluku"
+    }
+  },
+      {
+    "tempatLahirQid": {
       "value": "Q13095691"
     },
     "provinsiLabel": {
