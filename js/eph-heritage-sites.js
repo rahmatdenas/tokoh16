@@ -413,8 +413,8 @@ function updateFeatureCounts() {
 let labelIrisan = document.getElementById('label-irisan');
   let labelGabungan = document.getElementById('label-gabungan');
   
-  if (labelIrisan) labelIrisan.textContent = `Mode Irisan (${totalIntersection} Tokoh)`;
-  if (labelGabungan) labelGabungan.textContent = `Mode Gabungan (${totalUnion} Tokoh)`;
+  if (labelIrisan) labelIrisan.textContent = `Rangkap Pekerjaan (${totalIntersection} Tokoh)`;
+  if (labelGabungan) labelGabungan.textContent = `Memiliki Salah Satu Pekerjaan (${totalUnion} Tokoh)`;
 }
 
 // 7. Mesin Eksekutor Gabungan/Irisan (Diperbarui untuk Infinite Scroll)
