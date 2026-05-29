@@ -51,10 +51,17 @@
         </div>
 
 <div class="filter-box">
-  <select id="filter-mode-select" onchange="currentFilterMode = this.value; applyIntersectionFilter();" style="width:80%;">
-    <option value="intersection">Hanya Irisan (0 Tokoh)</option>
-    <option value="union">Tampilkan Gabungan (0 Tokoh)</option>
-  </select>
+<div id="filter-mode-container" style="margin-top: 10px; font-size: 0.9em;">
+  <label style="margin-right: 15px;">
+    <input type="radio" name="job_mode" value="single" checked> Default (Pilih 1 Saja)
+  </label>
+  <label style="margin-right: 15px;">
+    <input type="radio" name="job_mode" value="intersection"> <span id="label-irisan">Mode Irisan (Semua Syarat)</span>
+  </label>
+  <label>
+    <input type="radio" name="job_mode" value="union"> <span id="label-gabungan">Mode Gabungan (Tampilkan Semua)</span>
+  </label>
+</div>
 </div>
     </header>
     <div style="padding-left: 10px;padding-right: 15px;">
