@@ -3,6 +3,374 @@
     "bindings": [
       {
     "tempatLahirQid": {
+      "value": "Q13095691"
+    },
+    "provinsiLabel": {
+      "value": "Banten"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q193362"
+    },
+    "provinsiLabel": {
+      "value": "Jakarta"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q401273"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Barat"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q931352"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Barat"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q212125"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Barat"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q1183729"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Barat"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12505867"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Barat"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q838042"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Barat"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q3670088"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q3322292"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12482071"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q4702530"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12478970"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q3861264"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q4267460"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q3670018"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q7476273"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q4186338"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q3937265"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12483647"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q13094346"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q5030401"
+    },
+    "provinsiLabel": {
+      "value": "Yogyakarta"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12500697"
+    },
+    "provinsiLabel": {
+      "value": "Yogyakarta"
+    }
+  },
+      {
+    "tempatLahirQid": {
+      "value": "Q3690899"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q4988353"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Tengah"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12500697"
+    },
+    "provinsiLabel": {
+      "value": "Yogyakarta"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q10773386"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q13534907"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q3955907"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12493174"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q19732929"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12518145"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q7998688"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q3298373"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q13542416"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q25288175"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12524247"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q3101693"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q9132759"
+    },
+    "provinsiLabel": {
+      "value": "Jawa Timur"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q1789991"
+    },
+    "provinsiLabel": {
+      "value": "Bali"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q14635004"
+    },
+    "provinsiLabel": {
+      "value": "Bali"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q14726738"
+    },
+    "provinsiLabel": {
+      "value": "Bali"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q11340270"
+    },
+    "provinsiLabel": {
+      "value": "Bali"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12518827"
+    },
+    "provinsiLabel": {
+      "value": "Bali"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12475890"
+    },
+    "provinsiLabel": {
+      "value": "Bali"
+    }
+  },
+  {
+    "tempatLahirQid": {
+      "value": "Q12477356"
+    },
+    "provinsiLabel": {
+      "value": "Bali"
+    }
+  },
+      {
+    "tempatLahirQid": {
       "value": "Q3374975"
     },
     "provinsiLabel": {
