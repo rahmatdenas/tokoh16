@@ -384,7 +384,7 @@ function updateFeatureCounts() {
     Array.from(selectGender.options).forEach(opt => {
       let val = opt.value;
       let count = tempGenderCounts[val] || 0;
-      if (val === 'all') opt.textContent = `Semua Jenis Kelamin – ${count} Tokoh`;
+      if (val === 'all') opt.textContent = `Semua Jenis Kelamin`;
       else opt.textContent = `${val} – ${count} Tokoh`;
     });
   }
