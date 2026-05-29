@@ -82,12 +82,11 @@ if (result.pekerjaanList) {
              record.pekerjaanQids.add(jobQid); 
              
              if (typeof KAMUS_PEKERJAAN !== 'undefined' && KAMUS_PEKERJAAN[jobQid]) {
-                record.pekerjaan.add(KAMUS_PEKERJAAN[jobQid]); // Filter tetap aman
+                record.pekerjaan.add(KAMUS_PEKERJAAN[jobQid]);
              }
          });
       }
       
-      // Jika JSON tokoh kebetulan sudah membawa label provinsinya sendiri, gabungkan
       if (result.provinsiLabel && record.tempatLahirQid) {
          PetaProvinsi[record.tempatLahirQid] = result.provinsiLabel.value;
       }
@@ -100,8 +99,6 @@ if (result.pekerjaanList) {
     PetaProvinsi['Q3492'] = 'Sumatera';
     PetaProvinsi['Q3757'] = 'Jawa';
     PetaProvinsi['Q3812'] = 'Sulawesi';
-    // -------------------------------------------------
-
     BootstrapDataIsLoaded = true;
     buildDynamicIndices();
     populateMapAndIndex();
@@ -152,7 +149,6 @@ function populateMapAndIndex() {
   Object.entries(Records).forEach(entry => {
     let qid = entry[0], record = entry[1];
 
-    // Hanya membuat marker, tidak merendernya ke peta dulu
     if (record.lat && record.lon) {
       let mapMarker = L.marker(
         [record.lat, record.lon],
@@ -166,18 +162,14 @@ function populateMapAndIndex() {
       record.popup = popup;
     }
 
-    // Hanya membuat elemen <li> di memori, TIDAK dimasukkan ke HTML dulu!
+    // Hanya membuat elemen <li> di memori, nanti dimasukkan ke HTML
     let li = document.createElement('li');
     li.innerHTML = `<a href="#${qid}" id="idx-${qid}">${record.indexTitle}</a>`;
     record.indexLi = li;
   });
 
-  // Siapkan tombol-tombol filter
-  generateFilterSelect();
-  
-  // PANGGIL MESIN UTAMA: Ini akan otomatis merender peta dan memuat 10/50 data pertama ke daftar
-  applyIntersectionFilter();
-  
+  generateFilterSelect();  
+  applyIntersectionFilter();  
   processHashChange();
 }
 
@@ -251,18 +243,16 @@ btn.addEventListener('click', function() {
         let activeMode = modeElement ? modeElement.value : 'single';
 
         if (activeMode === 'single') {
-          // Mode Default: Bersihkan yang lain jika memilih tombol baru
           if (activePekerjaan.has(filterType)) {
             activePekerjaan.delete(filterType);
             this.classList.remove('active');
           } else {
             activePekerjaan.clear();
-            featButtons.forEach(b => b.classList.remove('active')); // Matikan visual tombol lain
+            featButtons.forEach(b => b.classList.remove('active')); 
             activePekerjaan.add(filterType);
             this.classList.add('active');
           }
         } else {
-          // Mode Gabungan/Irisan: Bisa pilih banyak (Multi-select)
           if (activePekerjaan.has(filterType)) {
             activePekerjaan.delete(filterType);
             this.classList.remove('active');
@@ -297,14 +287,14 @@ btn.addEventListener('click', function() {
 let modeRadios = document.querySelectorAll('input[name="job_mode"]');
   modeRadios.forEach(radio => {
     radio.addEventListener('change', function() {
-      // Jika user kembali memilih "Pilih 1 Saja" tapi tombol yang aktif ada banyak, kita reset
-      if (this.value === 'single' && activePekerjaan.size > 1) {
-        activePekerjaan.clear();
-        featButtons.forEach(b => b.classList.remove('active'));
-        if (btnAllPekerjaan) btnAllPekerjaan.classList.add('active');
-      }
+      activePekerjaan.clear();
+      let allFeatBtns = document.querySelectorAll('.feat-btn[data-filter]');
+      allFeatBtns.forEach(b => b.classList.remove('active'));
+      let btnAll = document.getElementById('btn-all-pekerjaan');
+      if (btnAll) btnAll.classList.add('active');
       updateFeatureCounts();
       applyIntersectionFilter();
+      
     });
   });
 }
@@ -417,7 +407,7 @@ let labelIrisan = document.getElementById('label-irisan');
   if (labelGabungan) labelGabungan.textContent = `Memiliki Salah Satu Pekerjaan (${totalUnion} Tokoh)`;
 }
 
-// 7. Mesin Eksekutor Gabungan/Irisan (Diperbarui untuk Infinite Scroll)
+// 7. Mesin Eksekutor Gabungan/Irisan
 function applyIntersectionFilter() {
   let selectRegion = document.getElementById('filter-region');
   let selectGender = document.getElementById('filter-gender');
@@ -448,23 +438,17 @@ function applyIntersectionFilter() {
       }
     }
 
-    // Filter Pencarian Teks dimasukkan ke sini
     let matchSearch = keywordCari === '' || record.indexTitle.toLowerCase().includes(keywordCari);
-
     return matchRegion && matchGender && matchPekerjaan && matchSearch;
   }).sort((a, b) => {
     return a.indexTitle.localeCompare(b.indexTitle);
   });
 
-  // Bersihkan DOM dan Reset Indeks Render
   let ol = document.getElementById('index-list');
   if(ol) ol.innerHTML = '';
   currentRenderIndex = 0;
 
-  // Panggil fungsi untuk merender 10 data pertama
   renderNextChunk();
-
-  // Untuk Peta Leaflet (MarkerCluster tetap aman menerima banyak data sekaligus)
   Cluster.clearLayers();
   let validMarkers = currentFilteredRecords.map(r => r.mapMarker).filter(m => m !== undefined);
   
@@ -523,7 +507,6 @@ function generateRecordDetails(qid) {
       queryIds += `|${arrPekerjaanQid.join('|')}`;
   }
 
-  // LANGKAH 2: Fetch dengan claims
   fetch(`https://www.wikidata.org/w/api.php?action=wbgetentities&ids=${queryIds}&props=labels|sitelinks|claims&languages=id|en&format=json&origin=*`)
     .then(res => res.json())
     .then(data => {
@@ -557,18 +540,14 @@ function generateRecordDetails(qid) {
             let lokEl = panelElem.querySelector(`#lokasi-${qid}`);
             if(lokEl) lokEl.textContent = cityName;
             
-            // LANGKAH 3: Render struktur <figure> persis seperti referensi gambar utama
             let imgLokasiEl = panelElem.querySelector(`#img-lokasi-${qid}`);
             if (imgLokasiEl && entCity.claims && entCity.claims.P18) {
                 let imgFileName = entCity.claims.P18[0].mainsnak.datavalue.value;
                 let encodedFileName = encodeURIComponent(imgFileName);
                 
-                // URL untuk href tautan klik (halaman info file Commons)
                 let commonsFileUrl = `https://commons.wikimedia.org/wiki/File:${encodedFileName}`;
-                // URL untuk src gambar aktual (menggunakan Special:FilePath)
                 let imgUrl = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodedFileName}?width=300`;
                 
-                // Membuat struktur HTML sama persis dengan yang ada di gambar referensi
                 imgLokasiEl.innerHTML = `
                   <figure class="">
                     <a href="${commonsFileUrl}" target="_blank">
@@ -608,6 +587,7 @@ if (pkjEl) {
     })
     .catch(err => console.log("Gagal memuat API dari Wikidata", err));
 }
+
 // 9. Penarik Artikel Wikipedia, modifikasi dari wikisocph
 function displayArticleExtract(title, elem) {
   let apiUrl = `https://id.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=1&redirects=true&titles=${encodeURIComponent(title)}&origin=*`;
@@ -678,26 +658,22 @@ function renderNextChunk() {
   let ol = document.getElementById('index-list');
   if (!ol) return;
 
-  // Ambil potongan data dari array yang sudah difilter
-  let nextBatch = currentFilteredRecords.slice(currentRenderIndex, currentRenderIndex + CHUNK_SIZE);
-  
-  if (nextBatch.length === 0) return; // Hentikan jika data sudah habis
-
-  // Menggunakan DocumentFragment agar lebih cepat dan tidak membebani peramban
+  let nextBatch = currentFilteredRecords.slice(currentRenderIndex, currentRenderIndex + CHUNK_SIZE);  
+  if (nextBatch.length === 0) return;
   let fragment = document.createDocumentFragment();
 
   nextBatch.forEach(record => {
     if (record.indexLi) {
-      record.indexLi.style.display = ''; // Pastikan tidak tersembunyi
+      record.indexLi.style.display = '';
       fragment.appendChild(record.indexLi);
     }
   });
 
   ol.appendChild(fragment);
-  currentRenderIndex += CHUNK_SIZE; // Perbarui penanda indeks untuk scroll berikutnya
+  currentRenderIndex += CHUNK_SIZE;
 }
 
-let scrollContainer = document.getElementById('index-container'); // Sesuaikan dengan ID kontainer scroll Anda di HTML
+let scrollContainer = document.getElementById('index-container'); // Catatanku, sesuaikan ID kontainer di HTML
 
 if (scrollContainer) {
   scrollContainer.addEventListener('scroll', function() {
