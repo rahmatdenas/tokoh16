@@ -1,6 +1,6 @@
 'use strict';
 
-const BASE_TITLE = 'Peta Persebaran Tokoh Indonesia Berdasarkan Tempat Kelahiran';
+const BASE_TITLE = 'Pemetaan Tokoh Indonesia';
 
 // 1. KAMUS PENERJEMAH LOKAL
 const KAMUS_PEKERJAAN = {
