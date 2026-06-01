@@ -163,7 +163,7 @@ optgroup option {
   overflow: hidden;
 }
 
-#about .designations {
+#about .pointer {
   margin: 10px 0 0 0;
   padding: 0;
   overflow: hidden;
@@ -180,7 +180,7 @@ optgroup option {
   min-height: 0px;
 }
 
-#about .designations li {
+#about .pointer li {
   position: relative;
   list-style: none;
   padding: 0px;
