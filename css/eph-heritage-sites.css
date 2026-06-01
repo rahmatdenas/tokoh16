@@ -163,24 +163,11 @@ optgroup option {
   overflow: hidden;
 }
 
-#about .pointer {
-  margin: 10px 0 0 0;
-  padding: 0;
-  overflow: hidden;
-}
-
 #details .designations p strong {
   padding-right: 5px;
 }
 
 #details .designations li {
-  position: relative;
-  list-style: none;
-  padding: 0px;
-  min-height: 0px;
-}
-
-#about .pointer li {
   position: relative;
   list-style: none;
   padding: 0px;
