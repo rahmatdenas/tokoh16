@@ -502,7 +502,7 @@ function generateRecordDetails(qid) {
 
   let articleHtml = '<div class="article main-text loading"><div class="loader"></div></div>';
 
-  let infoHtml = '<h2>Informasi Profil</h2>';
+  let infoHtml = '<h2>Ringkasan</h2>';
   infoHtml += `<div id="img-lokasi-${qid}" class="lokasi-img-container"></div>`;
   infoHtml += '<ul class="designations">';
   infoHtml += `<li><p><strong>Lahir:</strong> <span id="lokasi-${qid}">Memuat lokasi...</span> (${record.provinsiLabel})</p></li>`;
