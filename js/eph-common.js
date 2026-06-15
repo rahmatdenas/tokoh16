@@ -31,7 +31,6 @@ function init() {
   window.addEventListener('hashchange', processHashChange);
   Map.on('popupopen', function(e) { displayRecordDetails(e.popup._qid) });
 }
-
 function initMap() {
   Map = new L.map('map');
   Map.fitBounds([[MAX_PH_LAT, MAX_PH_LON], [MIN_PH_LAT, MIN_PH_LON]]);
@@ -51,6 +50,17 @@ function initMap() {
     'OpenStreetMap Carto' : osmLayer,
   };
   L.control.layers(baseMaps, null, {position: 'topleft'}).addTo(Map);
+
+  // ========================================================
+  // TAMBAHKAN KODE LANGKAH 3 DI SINI
+  // ========================================================
+  L.control.locate({
+    position: 'topleft', // Posisinya di bawah tombol zoom/layer
+    strings: {
+        title: "Tunjukkan lokasi saya"
+    }
+  }).addTo(Map); // Menggunakan huruf 'M' besar sesuai variabel Anda
+  // ========================================================
 
   let powered = L.control({ position: 'bottomleft' });
   powered.onAdd = function(Map) {
