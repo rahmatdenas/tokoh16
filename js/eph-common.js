@@ -55,7 +55,7 @@ function initMap() {
   // TAMBAHKAN KODE LANGKAH 3 DI SINI
   // ========================================================
   L.control.locate({
-    position: 'topleft', // Posisinya di bawah tombol zoom/layer
+    position: 'bottomright', // Posisinya di bawah tombol zoom/layer
     showCompass: false, // <-- TAMBAHKAN BARIS INI untuk mematikan sensor gerak/kompas
     strings: {
         title: "Tunjukkan lokasi saya"
